@@ -1,11 +1,22 @@
 import java.util.Scanner;
 
+/**
+ * An object of this class is a TV Programme
+ * Attributes of a TV Programme are ID, Name, Start time and End time
+ */
 public class TVShow implements Watchable{
     String showID;
     String showName;
     double startTime;
     double endTime;
 
+    /**
+     * Parameterized constructor creates a new TV Show with passed parameters
+     * @param showID Id
+     * @param showName Name
+     * @param startTime Start Time
+     * @param endTime End Time
+     */
     public TVShow(String showID, String showName, double startTime, double endTime) {
         this.showID = showID;
         this.showName = showName;
@@ -13,6 +24,11 @@ public class TVShow implements Watchable{
         this.endTime = endTime;
     }
 
+    /**
+     *Copy constructor creates a TV show with a new id and other attributes same as passed object
+     * @param tvShow TV show object
+     * @param showID New ID
+     */
     public TVShow(TVShow tvShow, String showID) {
         this.showID = showID;
         this.showName = tvShow.showName;
@@ -56,6 +72,11 @@ public class TVShow implements Watchable{
         return "Show ID: " + this.showID + ", Show Name: " + this.showName + ", Start Time: " + this.startTime + ", End Time: " +this.endTime;
     }
 
+    /**
+     * Checks whether two TV show have same attributes except the Show ID
+     * @param obj TV show object
+     * @return true if all attributes are same else false
+     */
     public boolean equals(Object obj) {
         if (obj == null || obj.getClass() != this.getClass()){
             return false;
@@ -66,6 +87,10 @@ public class TVShow implements Watchable{
         }
     }
 
+    /**
+     * Clone method that overrides the clone of object class
+     * @return a clone of the TV show with new ID
+     */
     public Object clone(){
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a new Show Id: ");
@@ -73,7 +98,13 @@ public class TVShow implements Watchable{
         return new TVShow(this, newShowID);
     }
 
+    /**
+     * Implementation of method from watchable, checks time clash between two shoes
+     * @param s Tv show object
+     * @return "Same Time" if there is a clash and the show is on same time as other, "Different Time" if there's no clash, "Some Overlap" if there is a clash and two show have any overlap in their timings
+     */
     public String isOnSameTime(TVShow s){
+        //System.out.println(s.showID+ " " +s.startTime+ " " +s.endTime+  "    "+this.showID+ " " +this.startTime+ " " +this.endTime);
         if (this.startTime == s.startTime && this.endTime == s.endTime) return "Same Time";
         else if (this.endTime <= s.startTime || this.startTime >= s.endTime )   return "Different Time";
         else return "Some Overlap";
