@@ -92,7 +92,7 @@ public class ProcessWishlist {
 
         ProcessWishlist pwl = new ProcessWishlist();
         pwl.processGuide(listGuide);
-        System.out.println("This is the list of the TV shows added to the stored in the Linked List");
+        System.out.println("This is the list of the TV shows stored in the Linked List");
         listGuide.printList();
 
         ArrayList<String> watching  = new ArrayList<String>(0);
