@@ -92,6 +92,7 @@ public class ProcessWishlist {
 
         ProcessWishlist pwl = new ProcessWishlist();
         pwl.processGuide(listGuide);
+        System.out.println("This is the list of the TV shows added to the stored in the Linked List");
         listGuide.printList();
 
         ArrayList<String> watching  = new ArrayList<String>(0);
@@ -101,6 +102,10 @@ public class ProcessWishlist {
         int sameTime = 0;
         int differentTime = 0;
         int someOverlap = 0;
+
+        System.out.println();
+        System.out.println("Here is the details of the shows that user can/cannot watch from his wishlist-");
+        System.out.println();
 
         for (int i = 0; i < wishlist.size(); i++){
             for (int j = 0; j < watching.size(); j++) {
